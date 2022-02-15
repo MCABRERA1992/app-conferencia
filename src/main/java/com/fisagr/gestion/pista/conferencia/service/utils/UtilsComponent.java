@@ -137,11 +137,14 @@ public class UtilsComponent {
 						charlaDto1.setTituloNetworking("17:00 p. m. Evento NetWorking");
 						charlaDto1.setSalidaAlmuerzoCharlaNetworking(true);
 
-					} else {
-						charlaDtos.stream().filter(e -> e.getIdentificadorCharla() == updateCharla).forEach(t -> {
-							t.setTituloNetworking("17:00 p. m. Evento NetWorking");
-							t.setSalidaAlmuerzoCharlaNetworking(true);
-						});
+					} else if(charlaDtos.stream()
+							.filter(t -> StringUtils.equalsIgnoreCase("A", t.getEstado())).count() < charlaDtos.stream().count()){
+//						charlaDtos.stream().filter(e -> e.getIdentificadorCharla() == updateCharla).forEach(t -> {
+//							t.setTituloNetworking("17:00 p. m. Evento NetWorking");
+//							t.setSalidaAlmuerzoCharlaNetworking(true);
+//						});
+						charlaDto1.setTituloNetworking("17:00 p. m. Evento NetWorking");
+						charlaDto1.setSalidaAlmuerzoCharlaNetworking(true);
 					}
 					break;
 				}
